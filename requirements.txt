@@ -1,6 +1,0 @@
-###### Requirements without Version Specifiers ######`
-bs4
-beautifulsoup4
-selenium
-chromedriver_binary
-###### Requirements with Version Specifiers ######`
