@@ -8,21 +8,22 @@ import csv,os
 
 def collect_info(shortURL):
     url = f"https://www.instagram.com/p/{shortURL}"
-    option = se.ChromeOptions()
-    option.add_argument('headless')
-    option.add_experimental_option("detach", False)
-    browser = se.Chrome('path/to/chromedriver',options=option)
+    option = se.ChromeOptions() #add option
+    option.add_argument('headless') # Don't show browser
+    option.add_experimental_option("detach", False) #close window after finishing
+    browser = se.Chrome('path/to/chromedriver',options=option) # open browser
     browser.get(url)
-    parse_html= BeautifulSoup(browser.page_source,"html.parser")
+    parse_html= BeautifulSoup(browser.page_source,"html.parser") # Scrape url
     date = parse_html.find(class_="_aaqe")
     like= parse_html.find(class_="x193iq5w xeuugli x1fj9vlw x13faqbe x1vvkbs xt0psk2 x1i0vuye xvs91rp x1s688f x5n08af x10wh9bi x1wdrske x8viiok x18hxmgj")
     content = parse_html.find(class_ ="_aacl _aaco _aacu _aacx _aad7 _aade")
-    date = BeautifulSoup(str(date),'html.parser').text
+    date = BeautifulSoup(str(date),'html.parser').text # remove html tags
     like = BeautifulSoup(str(like),'html.parser').text.replace('likes','')
     content = BeautifulSoup(str(content),'html.parser').text
     print(f"Date:{date}\n Likes: {like}\n Text: {content}")
 
-    CurrentPath = os.getcwd()
+    # create or update csv file
+    CurrentPath = os.getcwd() 
     file_path = f'{CurrentPath}/instainfo.csv'
     if os.path.isfile(file_path) == False:
       with open(file_path, 'w', newline='') as f:
