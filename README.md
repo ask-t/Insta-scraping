@@ -3,6 +3,7 @@
 ## Requirement
 
 ```bash
+brew install --cask chromedriver
 pip install beautifulsoup4
 pip install selenium
 pip install chromedriver-binary-auto
