@@ -18,6 +18,7 @@ docker image build -t analytics .
 
 ```bash
 docker run -it --rm analytics /bin/bash
+python app.py
 ```
 
 ## Check Container ID
