@@ -1,0 +1,5 @@
+requests
+selenium
+chromedriver-binary==113.0.5672.63
+beautifulsoup4
+chromedriver-binary-auto
