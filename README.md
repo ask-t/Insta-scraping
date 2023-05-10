@@ -1,33 +1,33 @@
-# Analytics-selenium-
+# Analytics-selenium- for instagram
 
-## Requirement
+This app get the instagram information (Date, Like count, contents, URL), then add those information in csv. The app requires to use Docker. If you don’t have Docker, please download this first.
 
-```bash
-brew install --cask chromedriver
-pip install beautifulsoup4
-pip install selenium
-pip install chromedriver-binary-auto
+## Language and Framework
 
-// highly recommend to reinstall when chrome version is updated
-pip install chromedriver-binary-auto
-```
+Python 3 
 
-### option (if selenium does not work)
+Docker
+
+## build docker image
 
 ```bash
-pip install chromedriver-autoinstaller
+docker image build -t analytics .
 ```
-```python
-from selenium import webdriver
-import chromedriver_autoinstaller
 
+## Run
 
-chromedriver_autoinstaller.install()  # Check if the current version of chromedriver exists
-                                      # and if it doesn't exist, download it automatically,
-                                      # then add chromedriver to path
-
-driver = webdriver.Chrome()
-driver.get("http://www.python.org")
-assert "Python" in driver.title
+```bash
+docker run -it --rm analytics /bin/bash
 ```
-see: https://pypi.org/project/chromedriver-autoinstaller/
+
+## Check Container ID
+
+```bash
+docker ps -a
+```
+
+## Copy csv file
+
+```bash
+docker cp <CONTAINER ID>:app/instainfo.csv <your pc's path>
+```
